@@ -1,0 +1,18 @@
+<!--pages/myinfo/myinfo.wxml-->
+<view class="container">
+  <view class="userinfo" bindtap='bindStuAccount'>
+    <view class="userImg">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"             mode="cover"></image>
+    </view>
+    
+    <view class="stuInfo">
+      <text wx:if="{{studentInfo==null}}" class="stuName0">绑定校园网账号</text>
+      <text wx:if="{{studentInfo!=null}}" class="stuName1">{{studentInfo.userName}}</text>
+    </view>
+  </view>
+
+  <view class="items">
+    <view class="regface" bindtap='registerFace'>注册人脸</view>
+    <view class="history" bindtap='searchTest'>识别测试</view>
+  </view>
+</view>

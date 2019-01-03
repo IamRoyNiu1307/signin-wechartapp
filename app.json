@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/myinfo/myinfo",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/bind/bind",
+    "pages/registerFace/registerFace",
+    "pages/searchFace/searchFace"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Face Signin",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "我的信息"
+      }
+    ]
+  }
+}

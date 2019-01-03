@@ -1,0 +1,46 @@
+/* pages/myinfo/myinfo.wxss */
+.userinfo{
+  padding: 20rpx 0;
+  width:80%;
+  border-bottom:1px solid #eee; 
+}
+.userImg image{
+  width:150rpx;
+  height:150rpx;
+  border-radius: 75rpx;
+  float: left;
+}
+.stuName0{
+  margin-left: 100rpx;
+  height:150rpx;
+  line-height: 150rpx;
+  color:#ccc;
+}
+.stuName1{
+  margin-left: 100rpx;
+  height:150rpx;
+  line-height: 150rpx;
+  color:black;
+}
+.items{
+  padding:50rpx 0;
+  width: 100%;
+  text-align: center;
+  
+}
+.regface{
+  width:40%;
+  height:150rpx;
+  line-height: 150rpx;
+  border: 1rpx solid black;
+  margin:0 0 0 50rpx;
+  float:left;
+}
+.history{
+  width:40%;
+  height:150rpx;
+  line-height: 150rpx;
+  border: 1rpx solid black;
+  margin:0 25rpx;
+  float: left;
+}

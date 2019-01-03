@@ -1,0 +1,16 @@
+<!--pages/bind/bind.wxml-->
+<view class="container">
+  <view class="accountForm">
+    <form bindsubmit='accountSubmit'>
+      <view class="inputGroup">
+        <input type="text" name="userId" placeholder='请输入账号'></input>
+      </view>
+      <view class="inputGroup">
+        <input type="password" name="userPassword" placeholder='请输入密码'></input>
+      </view>
+      <view class="inputGroup">
+        <button form-type="submit">绑定</button>
+      </view>
+    </form>
+  </view>
+</view>

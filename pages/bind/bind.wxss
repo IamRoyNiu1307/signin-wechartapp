@@ -1,0 +1,9 @@
+/* pages/bind/bind.wxss */
+
+.inputGroup input{
+  border-bottom: 1px solid #999;
+  margin: 80rpx 0;
+}
+.inputGroup button{
+  
+}

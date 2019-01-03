@@ -1,0 +1,5 @@
+<!--pages/searchFace/searchFace.wxml-->
+<view class="container">
+  <camera device-position="front" flash="off" binderror="error" style="width: 100%; height: 600px;"></camera>
+  <button bindtap='takePhoto'></button>
+</view>
