@@ -2,11 +2,12 @@
 <view class="container">
   <view class="accountForm">
     <form bindsubmit='accountSubmit'>
+      <view class="title">请输入校园网账号</view>
       <view class="inputGroup">
-        <input type="text" name="userId" placeholder='请输入账号'></input>
+        <input type="text" name="studentId" placeholder='请输入账号'></input>
       </view>
       <view class="inputGroup">
-        <input type="password" name="userPassword" placeholder='请输入密码'></input>
+        <input type="password" name="studentPassword" placeholder='请输入密码'></input>
       </view>
       <view class="inputGroup">
         <button form-type="submit">绑定</button>

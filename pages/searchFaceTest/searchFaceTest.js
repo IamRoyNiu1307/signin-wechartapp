@@ -2,7 +2,6 @@
 const config = require('../../config')
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,7 +9,7 @@ Page({
 
   },
   takePhoto: function () {
-
+    var that = this
     console.log("takephoto")
     //拍摄
     this.data.context.takePhoto({
@@ -19,31 +18,44 @@ Page({
         // this.setData({
         //   src: res.tempImagePath
         // })
+        this.setData({
+          imgsrc: res.tempImagePath
+        })
+        wx.showToast({
+          title: '正在识别···',
+          icon: 'loading',
+          duration: 20000,
+          mask: true
+
+        })
+        //将照片上传
         wx.uploadFile({
           url: config.searchFaceUrl,
           filePath: res.tempImagePath,
           name: 'file',
           formData: {
-            
+            'studentid': app.globalData.studentInfo.studentId
           },
           header: {
             'content-type': 'multipart/form-data'
           },
           success: function (res) {
+            console.log(res)
             var data = res.data
             var status = JSON.parse(data)["status"]
             var msg = JSON.parse(data)["msg"]
-            var userName = JSON.parse(data)["user_name"]
+            var studentName = JSON.parse(data)["student_name"]
 
-            console.log(data)
+            console.log(res.data)
             if(status==1){
               wx.showToast({
-                title: '成功:' + userName,
+                title: '成功:' + studentName,
                 icon: 'succes',
-                duration: 1000,
+                duration: 1500,
                 mask: true
 
               })
+              //延迟1.5秒返回上一页
               setTimeout(function () {
                 wx.navigateBack({
                   delta: 1
@@ -52,16 +64,19 @@ Page({
             }else if(status==0){
               wx.showToast({
                 title: '失败:' + msg,
-                icon: 'fail',
-                duration: 1000,
+                icon: 'none',
+                duration: 1500,
                 mask: true
-
+                
               })
+              //延迟1.5秒返回上一页
+              setTimeout(function () {
+                that.setData({
+                  imgsrc:null
+                })
+              }, 1500)
             }
             
-
-
-
             //do something
           }, fail: function (err) {
             console.log(err)

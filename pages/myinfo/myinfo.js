@@ -8,6 +8,7 @@ Page({
     context:null,
     userInfo: {},
     studentInfo:{},
+    has_registed:null,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -27,14 +28,33 @@ Page({
   },
   searchTest:function(){
     wx.navigateTo({
-      url: '../searchFace/searchFace',
+      url: '../searchFaceTest/searchFaceTest',
     })
   },
   registerFace:function(){
-    wx.navigateTo({
-      url: '../registerFace/registerFace',
-    })
+    if(this.data.has_registed==0){
+      wx.navigateTo({
+        url: '../registerFace/registerFace',
+      })
+    }else{
+      wx.showToast({
+        title: '您的面部已经注册过了！',
+        icon: 'none',
+        duration: 2000,
+        mask: true
+
+      })
+    }
+    
   },
+  onShow:function(){
+    if (app.globalData.studentInfo!=null&&this.data.studentInfo==null){
+      this.setData({
+        studentInfo: app.globalData.studentInfo,
+        
+      })
+    }
+  },       
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -64,6 +84,7 @@ Page({
     }
     var that = this
     //获取绑定的校园网账号
+    //获取openid
     if(app.globalData.openid==null){
       // 登录
       wx.login({
@@ -87,24 +108,33 @@ Page({
         }
       })
     }
+    //根据openid获取studentInfo
+    if (app.globalData.studentInfo==null){
+      wx.request({
+        url: config.getStudentInfoUrl,
+        data: app.globalData.openid,
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: "POST",
+        success(res) {
+          console.log(res.data)
+          app.globalData.studentInfo = res.data.studentInfo
+          app.globalData.has_registed = res.data.has_registed
+          that.setData({
+            has_registed: res.data.has_registed,
+            studentInfo: res.data.studentInfo
+          })
+
+        }
+      })
+    }else{
+      this.setData({
+        has_registed: app.globalData.has_registed,
+        studentInfo: app.globalData.studentInfo
+      })
+    }
     
-    
-    wx.request({
-      url: config.getStudentInfoUrl, 
-      data: app.globalData.openid,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: "POST",
-      success(res) {
-        console.log(res.data)
-        app.globalData.studentInfo = res.data.studentInfo
-        that.setData({
-          studentInfo : res.data.studentInfo
-        })
-        
-      }
-    })
   },
   getUserInfo: function (e) {
     console.log(e)

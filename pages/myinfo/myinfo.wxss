@@ -1,8 +1,9 @@
 /* pages/myinfo/myinfo.wxss */
 .userinfo{
-  padding: 20rpx 0;
+  padding: 20rpx 140rpx;
   width:80%;
   border-bottom:1px solid #eee; 
+  background: white;
 }
 .userImg image{
   width:150rpx;
@@ -10,37 +11,73 @@
   border-radius: 75rpx;
   float: left;
 }
+.stuInfo{
+  width: 100%;
+}
 .stuName0{
-  margin-left: 100rpx;
+  width:100%;
+  /* margin-left: 100rpx; */
   height:150rpx;
   line-height: 150rpx;
   color:#ccc;
+  text-align: center;
 }
 .stuName1{
-  margin-left: 100rpx;
+  width:100%;
+  /* margin-left: 100rpx; */
   height:150rpx;
   line-height: 150rpx;
   color:black;
+  text-align: center;
 }
-.items{
+.items00{
   padding:50rpx 0;
-  width: 100%;
+  width: auto;
+  /* width: 100%; */
   text-align: center;
   
 }
-.regface{
-  width:40%;
+.regface00{
+  width:300rpx;
+  /* width: 100%; */
   height:150rpx;
   line-height: 150rpx;
+  background:white;
   border: 1rpx solid black;
-  margin:0 0 0 50rpx;
+  border-radius: 30rpx;
+  /* margin:0 0 0 50rpx; */
   float:left;
 }
-.history{
-  width:40%;
+.history00{
+  width:300rpx;
+  /* width: 100%; */
   height:150rpx;
   line-height: 150rpx;
   border: 1rpx solid black;
-  margin:0 25rpx;
+  border-radius: 30rpx;
+  /* margin:0 25rpx; */
   float: left;
+}
+
+
+.items{
+  width:100%;
+  background: white;
+}
+.item{
+  margin:20rpx 0;
+  width:25%;
+  float:left;
+  /* border: 1px solid #eee; */
+}
+.item-image{
+  margin: 0 40rpx;
+  width:100rpx;
+  height:100rpx;
+  
+}
+.item-text{
+  width:100%;
+  text-align: center;
+  font-size:24rpx;
 }

@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -68,7 +68,7 @@ Page({
 
   accountSubmit:function(e){
     var json = e.detail.value
-    json["openId"] = app.globalData.openid
+    json["openid"] = app.globalData.openid
     console.log(json)
     wx.request({
       url: config.bindUrl, 
@@ -79,10 +79,32 @@ Page({
       method: "POST",
       success(res) {
         console.log(res.data)
-        app.globalData.studentInfo = res.data.studentInfo
-        wx.navigateBack({
-          delta:1
-        })
+        
+        if(res.data.status==1){
+          wx.showToast({
+            title: '绑定成功！',
+            icon: 'success',
+            duration: 1500,
+            mask: true
+
+          })
+          //延迟1.5秒返回上一页
+          setTimeout(function () {
+            app.globalData.studentInfo = res.data.studentInfo
+            wx.navigateBack({
+              detal: 1
+            })
+          }, 1500)
+        }else{
+          wx.showToast({
+            title: res.data.msg+'！',
+            icon: 'none',
+            duration: 1500,
+            mask: true
+
+          })
+        }
+        
       }
     })
   }

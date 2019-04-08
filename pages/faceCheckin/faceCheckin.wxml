@@ -1,6 +1,7 @@
-<!--pages/registerFace/registerFace.wxml-->
+<!--pages/faceCheckin/faceCheckin.wxml-->
 <view class="container">
   <camera wx:if="{{imgsrc==null}}" device-position="front" flash="off" binderror="error" style="width: 100%; height: 600px;"></camera>
   <image wx:if="{{imgsrc!=null}}" src="{{imgsrc}}" style="width: 100%; height: 600px;"></image>
   <button bindtap='takePhoto'></button>
 </view>
+

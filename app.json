@@ -6,24 +6,31 @@
     "pages/logs/logs",
     "pages/bind/bind",
     "pages/registerFace/registerFace",
-    "pages/searchFace/searchFace"
+    "pages/searchFaceTest/searchFaceTest",
+    "pages/faceCheckin/faceCheckin"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Face Signin",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#6495ED",
+    "navigationBarTitleText": "郑大考勤",
+    "navigationBarTextStyle": "light"
   },
   "tabBar": {
     "backgroundColor": "#fff",
+    "color": "#000",
+    "selectedColor": "#6495ED",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/shouye.png",
+        "selectedIconPath": "images/shouye-active.png"
       },
       {
         "pagePath": "pages/myinfo/myinfo",
-        "text": "我的信息"
+        "text": "我的信息",
+        "iconPath": "images/gerenzhongxin.png",
+        "selectedIconPath": "images/gerenzhongxin-active.png"
       }
     ]
   }

@@ -1,9 +1,18 @@
 /* pages/bind/bind.wxss */
-
+.title{
+  text-align: center;
+  font-size: 45rpx;
+}
 .inputGroup input{
+  font-size: 30rpx;
   border-bottom: 1px solid #999;
   margin: 80rpx 0;
 }
 .inputGroup button{
-  
+  background: #43CD80;
+  border-radius: 75rpx;
+}
+page{
+  padding-top: 200rpx;
+  background: white;
 }

@@ -1,4 +1,4 @@
-/* pages/registerFace/registerFace.wxss */
+/* pages/faceCheckin/faceCheckin.wxss */
 button{
   position:absolute;
   bottom:50rpx;

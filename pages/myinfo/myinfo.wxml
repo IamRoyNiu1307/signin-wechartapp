@@ -6,13 +6,58 @@
     </view>
     
     <view class="stuInfo">
-      <text wx:if="{{studentInfo==null}}" class="stuName0">绑定校园网账号</text>
-      <text wx:if="{{studentInfo!=null}}" class="stuName1">{{studentInfo.userName}}</text>
+      <view wx:if="{{studentInfo==null}}" class="stuName0">绑定校园网账号</view>
+      <view wx:if="{{studentInfo!=null}}" class="stuName1">{{studentInfo.studentName}}</view>
     </view>
   </view>
 
+  <!-- <view class="items">
+    <view class="regface" bindtap='registerFace'>
+     <view class="item-img" style='float:left'>
+      <image src='/images/zhuce.png' style="width:100rpx;height:100rpx;margin-top:20rpx"></image>
+      </view>
+      <view>人脸注册</view>
+    </view>
+
+
+
+    <view class="history" bindtap='searchTest'>
+      <view class="item-img" style='float:left'>
+        <image src='/images/renlianshibie.png' style="width:100rpx;height:100rpx;           margin-top:20rpx"></image>
+        </view>
+      <view>识别测试</view>
+    
+    </view>
+  </view> -->
+
   <view class="items">
-    <view class="regface" bindtap='registerFace'>注册人脸</view>
-    <view class="history" bindtap='searchTest'>识别测试</view>
+    <view class="item" bindtap='registerFace'>
+     <view class="item-img">
+      <image class="item-image" src='/images/tianjia.png'></image>
+      </view>
+      <view class="item-text">人脸注册</view>
+    </view>
+
+    <view class="item" bindtap='searchTest'>
+      <view class="item-img">
+        <image class="item-image" src='/images/shibie.png'></image>
+        </view>
+      <view class="item-text">识别测试</view>
+    </view>
+
+    <view class="item" bindtap=''>
+      <view class="item-img">
+        <image class="item-image" src='/images/lishi.png'></image>
+        </view>
+      <view class="item-text">缺勤记录</view>
+    </view>
+
+    <view class="item" bindtap=''>
+      <view class="item-img">
+        <image class="item-image" src='/images/setting.png'></image>
+        </view>
+      <view class="item-text">设置</view>
+    </view>
+
   </view>
 </view>

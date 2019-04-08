@@ -1,9 +1,13 @@
 /* pages/searchFace/searchFace.wxss */
 button{
   position:absolute;
-  bottom:20rpx;
+  bottom:50rpx;
   width:150rpx;
   height:150rpx;
+  border: 10rpx solid #aaa;
   border-radius:150rpx;
   background: #43CD80;
+}
+page{
+  background: black;
 }
