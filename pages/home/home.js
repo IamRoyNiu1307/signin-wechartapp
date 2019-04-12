@@ -7,14 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msgList:['','']
+    msgList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -28,7 +28,75 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    if(app.globalData.studentInfo==null){
+      // 登录
+    wx.login({
+      success: res => {
+        
+        wx.request({
+          url: config.openIdUrl,
+          data: {
+            code: res.code
+          },
+          success(res) {
+            console.log('拉取openid成功', res)
+            app.globalData.openid = res.data.openId
 
+            // 获取studentInfo
+            if (app.globalData.studentInfo == null) {
+              wx.request({
+                url: config.getStudentInfoUrl,
+                data: app.globalData.openid,
+                header: {
+                  'content-type': 'application/json' // 默认值
+                },
+                method: "POST",
+                success(res) {
+                  console.log(res.data)
+                  if (res.data.studentInfo!=null){
+                    app.globalData.studentInfo = res.data.studentInfo
+                  }
+                  if (res.data.courseList!=null){
+                    app.globalData.courseList = res.data.courseList
+                  }
+                  app.globalData.has_registed = res.data.has_registed
+                  //获取公告
+                  wx.request({
+                    url: config.getMsgListUrl + app.globalData.studentInfo.classId,
+                    header: {
+                      'content-type': 'application/json' // 默认值
+                    },
+                    method: "POST",
+                    success(res) {
+                      if(res.data.status==1){
+                        that.setData({
+                          msgList:res.data.msgList
+                        })
+                        console.log("msgList",res.data.msgList)
+                      }
+                    }
+                  })
+                }
+              })
+            }
+            // ++++++++++++++++++
+          },
+          fail(res) {
+            console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
+            callback(res)
+          }
+        })
+      }
+    })
+    }
+    
+
+
+
+    if (app.globalData.studentInfo != null) {
+      
+    }
   },
 
   /**
@@ -130,5 +198,29 @@ Page({
       
     }
     
+  },
+
+  todayLesson(){
+    if(app.globalData.studentInfo!=null){
+      wx.navigateTo({
+        url: '/pages/lesson/lesson',
+      })
+    }
+  },
+
+  vacate(){
+    if(app.globalData.studentInfo!=null){
+      wx.navigateTo({
+        url:'/pages/vacate/vacate',
+      })
+    }
+  },
+
+  msgInfo(e){
+    var that = this
+    var selectId=e.currentTarget.id
+    wx.navigateTo({
+      url: '/pages/message/message?msg=' + JSON.stringify(that.data.msgList[selectId]),
+    })
   }
 })

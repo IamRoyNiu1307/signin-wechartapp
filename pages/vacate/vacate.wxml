@@ -1,0 +1,88 @@
+<import src="/pages/common/head.wxml" />
+<import src="/pages/common/foot.wxml" />
+
+<view class="container">
+  <template is="head" data="{{title: '假条'}}"/>
+
+  <view class="page-body">
+    <view class="weui-cells__title">课程选择</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker value="{{selectCourse}}" range='{{courseNames}}' bindchange="bindCourseChange">
+              <view class="weui-input">{{courseList[selectCourse].courseName}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+     <view class="weui-cells__title">日期选择</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
+              <view class="weui-input">{{date}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+  <view class="page-section">
+      <view class="page-section-title">请假原因</view>
+      <view class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="radioChange">
+          <label class="weui-cell weui-check__label" wx:for="{{reason}}" wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+              <radio value="{{item.value}}" checked="true"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="page-section-title">详细说明</view>
+      <view class="textarea-wrp">
+        <textarea bindinput="bindTextAreaInput" auto-height />
+      </view>
+    </view>
+
+    <view class="weui-cells">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">上传图片</view>
+                  <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image">
+                      <view class="weui-uploader__file">
+                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+     
+  </view>
+  <view class='bottomView'>
+    <button bindtap='formSubmit'>提交</button>
+  </view>
+  
+</view>

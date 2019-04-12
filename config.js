@@ -19,6 +19,10 @@ const config = {
 
   faceSigninUrl: `http://${host}/wx/faceSignin`,
 
+  getMsgListUrl: `http://${host}/wx/getMsgList/`,
+
+  submitLeaveApplicationUrl: `http://${host}/wx/submitLeaveApplication`,
+
   // 登录地址，用于建立会话
   loginUrl: `http://${host}/wx/login`,
 

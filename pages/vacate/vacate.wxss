@@ -1,0 +1,30 @@
+@import "/pages/common/lib/weui.wxss";
+.picker{
+  padding: 19rpx 26rpx;
+  background-color: #FFFFFF;
+}
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+textarea {
+    min-height: 100rpx;
+    width: 700rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+    border-top:1rpx solid #D9D9D9;
+    border-bottom:1rpx solid #D9D9D9;
+}
+.bottomView{
+  width: 700rpx;
+  position: fixed;
+  bottom: 0rpx;
+}
+.bottomView button{
+  color: white;
+  background: rgb(120, 161, 238);
+  width: 95%;
+}

@@ -1,0 +1,9 @@
+<!--pages/message/message.wxml-->
+<view class='container'>
+  <view class='title'>{{msg.title}}</view>
+  <view class='image' wx:if="{{msg.imagePath!=''}}">
+    <image src='{{msg.imagePath}}'></image>
+  </view>
+  <view class='content'>{{msg.content}}</view>
+  <view class="pushDate">{{msg.pushDate}}</view>
+</view>
